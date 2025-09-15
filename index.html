@@ -1,9 +1,12 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Marker Based WebAR</title>
+    <title>Marker Based WebAR with Draco</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/3.3.2/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.js"></script>
+
+    <!-- A-Frame Extras (support Draco + animations etc) -->
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@latest/dist/aframe-extras.loaders.min.js"></script>
   </head>
   <body style="margin:0; overflow:hidden;">
     <a-scene
@@ -11,11 +14,11 @@
       arjs="sourceType: webcam; debugUIEnabled: false;"
       vr-mode-ui="enabled: false">
 
-      <!-- marker pakai file .patt buatanmu -->
+      <!-- Marker pakai .patt -->
       <a-marker type="pattern" url="model1.patt">
-        <!-- load model .glb -->
-        <a-entity 
-          gltf-model="url(model1.glb)" 
+        <!-- Load model .glb dengan Draco decoder -->
+        <a-entity
+          gltf-model-plus="src: url(model1.glb); dracoDecoderPath: ./"
           scale="0.5 0.5 0.5"
           rotation="0 180 0"
           position="0 0 0">
